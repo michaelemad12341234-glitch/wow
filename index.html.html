@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كنيسة اباكير ويوحنا — دليل الأسر</title>
+<meta name="description" content="دليل تواصل أسر كنيسة اباكير ويوحنا — تصفح بيانات أسرة العذراء مريم، أسرة اباكير ويوحنا، وأسرة الأنبا أبرام، وابحث عن أي شخص بالاسم أو رقم التليفون.">
+<meta name="theme-color" content="#1c3550">
+<meta property="og:type" content="website">
+<meta property="og:title" content="دليل أسر كنيسة اباكير ويوحنا">
+<meta property="og:description" content="دليل تواصل أسر الكنيسة — أسماء، أماكن، وأرقام تليفونات لكل أسرة، وبحث سريع عن أي شخص.">
+<meta property="og:locale" content="ar_EG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="دليل أسر كنيسة اباكير ويوحنا">
+<meta name="twitter:description" content="دليل تواصل أسر الكنيسة — أسماء، أماكن، وأرقام تليفونات لكل أسرة، وبحث سريع عن أي شخص.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#211c1a;
+    --ink-soft:#6b6058;
+    --paper:#faf7f2;
+    --paper-2:#f1ebe0;
+    --card:#ffffff;
+    --line: rgba(33,28,26,0.11);
+    --gold:#b3872c;
+    --gold-deep:#8a6a20;
+    --wine:#1c3550;
+    --wine-2:#2a4a6b;
+
+    --g1:#2b6a83;   /* مريم العذراء - أزرق */
+    --g1-soft:#e8f1f4;
+    --g2:#8a2a2f;   /* اباكير ويوحنا - عنابي */
+    --g2-soft:#f6e9e8;
+    --g3:#9c7018;   /* الأنبا أبرام - ذهبي */
+    --g3-soft:#f7f0dc;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#ece5da;
+      --ink-soft:#b7ab9c;
+      --paper:#17151a;
+      --paper-2:#211d22;
+      --card:#1e1b20;
+      --line: rgba(236,229,218,0.12);
+      --g1-soft:#1c2b32;
+      --g2-soft:#2c1c1e;
+      --g3-soft:#2b2416;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#ece5da;
+    --ink-soft:#b7ab9c;
+    --paper:#17151a;
+    --paper-2:#211d22;
+    --card:#1e1b20;
+    --line: rgba(236,229,218,0.12);
+    --g1-soft:#1c2b32;
+    --g2-soft:#2c1c1e;
+    --g3-soft:#2b2416;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Cairo',sans-serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  button{font:inherit;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:30;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:820px; margin:0 auto;
+    display:flex; align-items:center; gap:10px;
+    padding:11px 16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:9px;
+    font-weight:700; font-size:14.5px;
+    text-decoration:none; color:var(--ink);
+    cursor:pointer; border:none; background:none; padding:0;
+  }
+  .brand .crest{
+    width:30px;height:30px; flex:none; border-radius:50%;
+    background:linear-gradient(160deg, var(--wine), var(--wine-2));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .brand .crest svg{width:16px;height:16px;color:var(--gold);}
+  .brand span{font-family:'Aref Ruqaa',serif; font-size:17px;}
+  .topbar-sep{flex:1;}
+  .back-link{
+    display:none;
+    align-items:center; gap:6px;
+    border:1px solid var(--line);
+    background:var(--paper-2);
+    color:var(--ink-soft);
+    padding:7px 13px;
+    border-radius:999px;
+    font-size:13px; font-weight:600;
+    cursor:pointer;
+  }
+  .back-link svg{width:14px;height:14px;}
+
+  /* ================= HOME VIEW ================= */
+  #view-home{display:none;}
+  #view-home[data-show="true"]{display:block;}
+
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(900px 340px at 20% -20%, rgba(179,135,44,0.28), transparent 60%),
+      linear-gradient(165deg, var(--wine) 0%, #14283c 65%, #0a1720 100%);
+    color:#f6ecd8;
+    padding:40px 20px 40px;
+    overflow:hidden;
+    text-align:center;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: radial-gradient(circle, rgba(246,236,216,0.09) 1px, transparent 1.4px);
+    background-size:24px 24px;
+    opacity:.5; pointer-events:none;
+  }
+  .hero-inner{position:relative; max-width:640px; margin:0 auto;}
+  .hero-crest{
+    width:56px;height:56px; margin:0 auto 16px;
+    border:1.5px solid rgba(246,236,216,0.35);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-crest svg{width:26px;height:26px; color:var(--gold);}
+  .hero-eyebrow{
+    color:#e9c46a; font-size:13px; letter-spacing:1.5px; margin-bottom:10px;
+    font-weight:700; text-transform:uppercase;
+  }
+  .hero h1{
+    font-family:'Aref Ruqaa', serif;
+    font-weight:700;
+    font-size:clamp(28px,7vw,40px);
+    margin:0 0 10px;
+    line-height:1.3;
+  }
+  .hero h1::after{
+    content:"";
+    display:block; width:56px; height:3px; margin:14px auto 0;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    border-radius:3px;
+  }
+  .hero p{
+    margin:16px auto 0; color:#c9d4de; font-size:15px; max-width:440px; line-height:1.9;
+  }
+
+  .home-shell{max-width:720px; margin:-8px auto 60px; padding:0 16px;}
+
+  .search-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:5px 6px;
+    box-shadow:0 14px 32px -20px rgba(20,10,10,0.45);
+    display:flex; align-items:center; gap:8px;
+    margin-bottom:28px;
+    transition:box-shadow .15s ease, border-color .15s ease;
+  }
+  .search-card:focus-within{
+    border-color:var(--gold);
+    box-shadow:0 14px 32px -18px rgba(20,10,10,0.5), 0 0 0 3px color-mix(in srgb, var(--gold) 18%, transparent);
+  }
+  .search-card svg{width:17px;height:17px; color:var(--ink-soft); margin-inline-start:10px; flex:none;}
+  .search-card input{
+    flex:1; border:none; background:transparent; outline:none;
+    font-family:'Cairo',sans-serif; font-size:14.5px; color:var(--ink);
+    padding:11px 4px;
+  }
+  .search-card input::placeholder{color:var(--ink-soft);}
+
+  .section-label{
+    font-size:12.5px; color:var(--ink-soft); font-weight:600;
+    margin:0 4px 12px; display:flex; align-items:center; gap:8px;
+  }
+  .section-label::after{content:""; flex:1; height:1px; background:var(--line);}
+
+  .fam-grid{display:flex; flex-direction:column; gap:12px;}
+  .fam-card{
+    display:flex; align-items:center; gap:14px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:16px;
+    cursor:pointer;
+    text-align:right;
+    border-inline-start:5px solid var(--fc);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .fam-card:hover{ box-shadow:0 12px 26px -18px rgba(20,10,10,0.45); transform:translateY(-1px); }
+  .fam-icon{
+    width:48px;height:48px; border-radius:13px; flex:none;
+    background:var(--fc-soft); color:var(--fc);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .fam-icon svg{width:22px;height:22px;}
+  .fam-body{flex:1; min-width:0;}
+  .fam-body h3{
+    font-family:'Aref Ruqaa',serif; font-size:18.5px; margin:0 0 4px;
+  }
+  .fam-body p{margin:0; font-size:12.5px; color:var(--ink-soft);}
+  .fam-body .pending-flag{color:var(--gold-deep); font-weight:700;}
+  .fam-arrow{color:var(--ink-soft); flex:none;}
+  .fam-arrow svg{width:16px;height:16px;}
+
+  .home-search-results{margin-top:18px;}
+  .result-row{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:11px 4px; border-bottom:1px solid var(--line);
+  }
+  .result-row:last-child{border-bottom:none;}
+  .result-name{font-weight:600; font-size:14px;}
+  .result-fam{font-size:11.5px; color:var(--ink-soft);}
+  .result-go{
+    font-size:12px; color:var(--gold-deep); font-weight:700; white-space:nowrap;
+    background:none; border:none; cursor:pointer;
+  }
+
+  /* ================= FAMILY VIEW ================= */
+  #view-family{display:none;}
+  #view-family[data-show="true"]{display:block;}
+
+  .fam-hero{
+    background:linear-gradient(160deg, var(--fvc) 0%, color-mix(in srgb, var(--fvc) 65%, #14100f) 100%);
+    color:#fbf6ec;
+    padding:30px 20px 52px;
+    text-align:center;
+  }
+  .fam-hero-inner{max-width:640px; margin:0 auto;}
+  .fam-hero .fam-icon{
+    background:rgba(255,255,255,0.14); color:#fbf6ec;
+    width:52px; height:52px; margin:0 auto 12px;
+  }
+  .fam-hero h1{
+    font-family:'Aref Ruqaa',serif; font-size:clamp(24px,6vw,32px); margin:0 0 6px;
+  }
+  .fam-hero .sub{font-size:13.5px; color:rgba(251,246,236,0.82);}
+
+  .fam-shell{max-width:720px; margin:-30px auto 60px; padding:0 16px;}
+
+  .toolbar{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px;
+    box-shadow:0 14px 32px -20px rgba(20,10,10,0.45);
+    margin-bottom:18px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .toolbar .search-row{flex:1; display:flex; align-items:center; gap:9px;}
+  .toolbar svg{width:17px;height:17px;color:var(--ink-soft);flex:none;}
+  .toolbar input{
+    flex:1; border:none; background:transparent; outline:none;
+    font-family:'Cairo',sans-serif; font-size:14.5px; color:var(--ink);
+    padding:4px 2px;
+  }
+  .toolbar input::placeholder{color:var(--ink-soft);}
+  .clear-btn{
+    border:none;background:var(--paper-2); color:var(--ink-soft);
+    width:24px;height:24px;border-radius:50%; cursor:pointer; font-size:13px;
+    display:none; align-items:center; justify-content:center; flex:none;
+  }
+  .add-btn{
+    border:none;
+    background:var(--fvc, #8b6f2d);
+    color:#fff;
+    border-radius:10px;
+    padding:9px 14px;
+    font-family:'Cairo',sans-serif; font-size:13.5px; font-weight:700;
+    cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+    white-space:nowrap; flex:none;
+  }
+
+  .cards{display:grid; grid-template-columns:1fr; gap:10px;}
+  @media(min-width:600px){ .cards{grid-template-columns:1fr 1fr;} }
+
+  .card{
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px;
+    display:flex; gap:12px;
+  }
+  .avatar{
+    width:42px;height:42px; border-radius:11px; flex:none;
+    background:var(--fvc-soft); color:var(--fvc);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:15px; font-family:'Cairo',sans-serif;
+  }
+  .card-body{flex:1; min-width:0;}
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:6px;}
+  .card-name{font-weight:700; font-size:15.5px; margin:0 0 3px;}
+  .card-loc{
+    display:flex; align-items:center; gap:5px;
+    color:var(--ink-soft); font-size:12.5px; margin-bottom:9px;
+  }
+  .card-loc svg{width:13px;height:13px;flex:none;}
+  .card-note{
+    font-size:12px; color:var(--ink-soft);
+    background:var(--paper-2);
+    border-radius:8px; padding:6px 9px; margin-top:8px;
+    line-height:1.7;
+  }
+  .card-actions{display:flex; gap:7px; margin-top:2px;}
+  .icon-link{
+    flex:1;
+    display:flex; align-items:center; justify-content:center; gap:5px;
+    border-radius:9px; padding:7px 6px;
+    text-decoration:none;
+    font-size:12.5px; font-weight:600;
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+  .icon-link svg{width:14px;height:14px;flex:none;}
+  .icon-link.call{background:var(--fvc-soft); border-color:var(--fvc); color:var(--fvc);}
+  .icon-link.wa{background:#e7f6ec; border-color:#3fa35a; color:#2a7d43;}
+
+  .edit-menu-btn{
+    border:none;background:transparent;color:var(--ink-soft);
+    cursor:pointer; padding:4px; border-radius:6px; line-height:0; flex:none;
+  }
+  .edit-menu-btn:hover{background:var(--paper-2);}
+
+  .empty{
+    text-align:center; padding:34px 16px; color:var(--ink-soft);
+    border:1px dashed var(--line); border-radius:14px; font-size:13.5px;
+  }
+
+  .admin-note{
+    text-align:center; font-size:11.5px; color:var(--ink-soft);
+    margin:14px 4px 0;
+  }
+
+  .pending-card{border-style:dashed; border-color:var(--gold);}
+  .pending-badge{
+    display:inline-block; font-size:10.5px; font-weight:700;
+    color:var(--gold-deep); background:var(--g3-soft);
+    border-radius:999px; padding:2px 8px; margin-inline-start:6px;
+  }
+  .review-actions{display:flex; gap:7px; margin-top:10px;}
+  .review-btn{
+    flex:1; border:none; border-radius:9px; padding:8px 6px;
+    font-size:12.5px; font-weight:700; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:5px;
+  }
+  .review-btn.approve{background:#e7f6ec; color:#2a7d43;}
+  .review-btn.reject{background:var(--paper-2); color:#8a2a2f;}
+  .review-btn svg{width:13px;height:13px;}
+
+  /* ---------- Modal ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(15,8,8,0.55);
+    display:none; align-items:flex-end; justify-content:center; z-index:50;
+    backdrop-filter:blur(2px);
+  }
+  .overlay[data-open="true"]{display:flex;}
+  .modal{
+    background:var(--paper);
+    width:100%; max-width:440px;
+    border-radius:18px 18px 0 0;
+    padding:20px 18px 24px;
+    max-height:88vh; overflow:auto;
+    animation:up .18s ease;
+  }
+  @media(min-width:640px){
+    .overlay{align-items:center;}
+    .modal{border-radius:18px;}
+  }
+  @keyframes up{from{transform:translateY(14px);opacity:.4;} to{transform:translateY(0);opacity:1;}}
+  .modal h3{font-family:'Aref Ruqaa',serif; font-size:20px; margin:0 0 14px;}
+  .field{margin-bottom:12px;}
+  .field label{display:block; font-size:12.5px; color:var(--ink-soft); margin-bottom:5px;}
+  .field input, .field textarea, .field select{
+    width:100%; border:1px solid var(--line); border-radius:10px;
+    padding:10px 11px; font-family:'Cairo',sans-serif; font-size:14.5px;
+    background:var(--paper-2); color:var(--ink); outline:none;
+  }
+  .field textarea{resize:vertical; min-height:60px;}
+  .field input:focus, .field textarea:focus, .field select:focus{border-color:var(--gold);}
+  .modal-actions{display:flex; gap:10px; margin-top:16px;}
+  .btn{
+    flex:1; border:none; border-radius:10px; padding:11px; font-weight:700;
+    font-family:'Cairo',sans-serif; font-size:14.5px; cursor:pointer;
+  }
+  .btn.primary{background:var(--wine); color:#f6ecd8;}
+  .btn.danger{background:#8a2a2f; color:#fff;}
+  .btn.ghost{background:var(--paper-2); color:var(--ink);}
+
+  .toast{
+    position:fixed; bottom:18px; left:50%; transform:translateX(-50%);
+    background:var(--ink); color:var(--paper); padding:10px 18px;
+    border-radius:999px; font-size:13.5px; z-index:60;
+    opacity:0; pointer-events:none; transition:.2s ease;
+    max-width:90vw; text-align:center;
+  }
+  .toast[data-show="true"]{opacity:1; transform:translate(-50%,-6px);}
+
+  @media print{
+    .topbar, .hero, .fam-hero, .toolbar, .add-btn, .card-actions, .edit-menu-btn, .search-card, .admin-note{display:none !important;}
+    body{background:#fff;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <button class="brand" id="goHome">
+      <span class="crest">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M6 7h12"/></svg>
+      </span>
+      <span>كنيسة اباكير ويوحنا</span>
+    </button>
+    <div class="topbar-sep"></div>
+    <button class="back-link" id="backBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+      الرئيسية
+    </button>
+  </div>
+</div>
+
+<!-- ============ HOME VIEW ============ -->
+<div id="view-home">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-crest">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M6 7h12"/></svg>
+      </div>
+      <div class="hero-eyebrow">اجتماع ثانوي</div>
+      <h1>أُسَر كنيسة اباكير ويوحنا</h1>
+      <p>اُنْظُرْ إِلَى الْخِدْمَةِ الَّتِي قَبِلْتَهَا فِي الرَّبِّ لِكَيْ تُتَمِّمَهَا (كو 4: 17)</p>
+    </div>
+  </div>
+
+  <div class="home-shell">
+    <div class="search-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input id="homeSearch" type="text" placeholder="ابحث بالاسم، المكان، أو رقم التليفون...">
+    </div>
+
+    <div id="homeDefault">
+      <p class="section-label">الأسر</p>
+      <div class="fam-grid" id="famGrid"></div>
+    </div>
+
+    <div id="homeResults" class="home-search-results" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- ============ FAMILY VIEW ============ -->
+<div id="view-family">
+  <div class="fam-hero" id="famHeroBand">
+    <div class="fam-hero-inner">
+      <div class="fam-icon" id="famHeroIcon"></div>
+      <h1 id="famHeroTitle"></h1>
+      <div class="sub" id="famHeroSub"></div>
+    </div>
+  </div>
+
+  <div class="fam-shell">
+    <div class="toolbar">
+      <div class="search-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input id="famSearch" type="text" placeholder="ابحث في هذه الأسرة...">
+        <button class="clear-btn" id="famClear">✕</button>
+      </div>
+      <button class="add-btn" id="addPersonBtn" type="button">＋ إضافة</button>
+    </div>
+
+    <div class="cards" id="famCards"></div>
+  </div>
+</div>
+
+<!-- نافذة إضافة شخص -->
+<div class="overlay" id="addOverlay" data-open="false">
+  <div class="modal">
+    <h3>إضافة شخص إلى الأسرة</h3>
+
+    <div class="field">
+      <label for="addName">الاسم *</label>
+      <input id="addName" type="text" placeholder="اكتب الاسم">
+    </div>
+
+    <div class="field">
+      <label for="addGroup">الأسرة</label>
+      <select id="addGroup">
+        <option value="mary">أسرة العذراء مريم</option>
+        <option value="abakir">أسرة اباكير ويوحنا</option>
+        <option value="abraam">أسرة الأنبا أبرام</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="addLocation">المكان</label>
+      <input id="addLocation" type="text" placeholder="مثال: أبو قرقاص">
+    </div>
+
+    <div class="field">
+      <label for="addPhone">رقم التليفون</label>
+      <input id="addPhone" type="tel" placeholder="01xxxxxxxxx">
+    </div>
+
+    <div class="field">
+      <label for="addNote">ملاحظات</label>
+      <textarea id="addNote" placeholder="اختياري"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="addPin">الرقم السري</label>
+      <input id="addPin" type="password" placeholder="الرقم السري">
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn ghost" id="addCancel" type="button">إلغاء</button>
+      <button class="btn primary" id="addSave" type="button">حفظ</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  // رابط Google Apps Script
+  const API_URL = "https://script.google.com/macros/s/AKfycbwIK5nBBQ9gLxDO7tnwX-RyKnp4s11Ta5J0C8kB9QJBI42QNJkc36SQ-PZeWysNQ1YS8w/exec";
+  const ADMIN_PIN = "michael2026";
+
+  const GROUPS = [
+    { id:"mary",   name:"أسرة العذراء مريم",   desc:"دليل تواصل أسرة العذراء مريم", color:"var(--g1)", soft:"var(--g1-soft)",
+      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c-2 2.5-2 5-2 5a2 2 0 1 0 4 0s0-2.5-2-5z"/><path d="M6 21c0-5 2.5-8 6-8s6 3 6 8"/></svg>' },
+    { id:"abakir",name:"أسرة اباكير ويوحنا",  desc:"دليل تواصل أسرة اباكير ويوحنا", color:"var(--g2)", soft:"var(--g2-soft)",
+      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M6 7h12"/></svg>' },
+    { id:"abraam", name:"أسرة الأنبا أبرام",    desc:"دليل تواصل أسرة الأنبا أبرام", color:"var(--g3)", soft:"var(--g3-soft)",
+      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 4.6L18 9l-4.2 2.4L15 16l-3-2.3L9 16l1.2-4.6L6 9l4.2-.4z"/></svg>' }
+  ];
+
+
+  // البيانات يتم تحميلها من Google Sheets عن طريق Google Apps Script
+  const PEOPLE = [];
+
+  let people = PEOPLE.slice();
+
+  function normalizePerson(p, index){
+    return {
+      id: p.id || p.ID || ("p" + (index + 1)),
+      group: p.group || p.family || p["الأسرة"] || "",
+      name: p.name || p["الاسم"] || "",
+      location: p.location || p["المكان"] || "",
+      phone: p.phone || p["التليفون"] || p["الهاتف"] || "",
+      note: p.note || p["ملاحظات"] || ""
+    };
+  }
+
+  async function loadPeople(){
+    try{
+      const res = await fetch(API_URL + "?t=" + Date.now(), {cache:"no-store"});
+      if(!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      people = Array.isArray(data) ? data.map(normalizePerson).filter(p=>p.name) : [];
+      render();
+    }catch(err){
+      console.error(err);
+      showToast("تعذر تحميل البيانات من Google Sheets");
+      render();
+    }
+  }
+  let homeQuery = "";
+  let famQuery = "";
+  let currentGroup = null; // null = home
+
+  const $ = (id)=>document.getElementById(id);
+  const toastEl = $("toast");
+
+  function groupOf(id){ return GROUPS.find(g=>g.id===id); }
+
+  function showToast(msg){
+    toastEl.textContent = msg;
+    toastEl.dataset.show = "true";
+    setTimeout(()=>{ toastEl.dataset.show = "false"; }, 1900);
+  }
+  function normalize(s){ return (s||"").toString().trim().toLowerCase(); }
+  function digits(s){ return (s||"").toString().replace(/[^\d]/g,""); }
+  function matchesQuery(p, rawQuery){
+    const nq = normalize(rawQuery);
+    if(!nq) return true;
+    if(normalize(p.name).includes(nq)) return true;
+    if(normalize(p.location).includes(nq)) return true;
+    const qd = digits(rawQuery);
+    if(qd && digits(p.phone).includes(qd)) return true;
+    return false;
+  }
+  function initials(name){
+    const parts = (name||"").trim().split(/\s+/).filter(Boolean);
+    if(!parts.length) return "؟";
+    return parts[0].slice(0,1);
+  }
+  function waLink(phone){
+    let d = digits(phone);
+    if(d.startsWith("0")) d = "20" + d;
+    return "https://wa.me/" + d;
+  }
+  function escapeHtml(s){
+    return (s||"").toString().replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+  }
+  function iconPhone(){
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>';
+  }
+  function iconWA(){
+    return '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 1.9 0 1.1.8 2.2 1 2.4.1.1 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.1.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.1 8.1 0 0 1-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>';
+  }
+  function iconPin(){
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+  }
+  function iconDots(){
+    return '<svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg>';
+  }
+  function iconCheck(){
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>';
+  }
+  function iconX(){
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+  }
+
+  // ---------------- Routing ----------------
+  function routeFromHash(){
+    const h = (location.hash || "").replace("#","");
+    return GROUPS.some(g=>g.id===h) ? h : null;
+  }
+  function goTo(groupId){
+    location.hash = groupId ? "#" + groupId : "";
+  }
+  window.addEventListener("hashchange", ()=>{ currentGroup = routeFromHash(); render(); });
+  $("goHome").addEventListener("click", ()=>goTo(null));
+  $("backBtn").addEventListener("click", ()=>goTo(null));
+
+  // ---------------- Home view ----------------
+  function renderFamGrid(){
+    $("famGrid").innerHTML = GROUPS.map(g=>{
+      const n = people.filter(p=>p.group===g.id).length;
+      return `<button class="fam-card" data-go="${g.id}" style="--fc:${g.color}; --fc-soft:${g.soft};">
+        <span class="fam-icon">${g.icon}</span>
+        <span class="fam-body">
+          <h3>${g.name}</h3>
+          <p>${n} ${n===1 ? "شخص" : "أشخاص"}</p>
+        </span>
+        <span class="fam-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></span>
+      </button>`;
+    }).join("");
+    $("famGrid").querySelectorAll("[data-go]").forEach(btn=>{
+      btn.addEventListener("click", ()=>goTo(btn.dataset.go));
+    });
+  }
+
+  function renderHomeSearch(){
+    const q = homeQuery.trim();
+    const showResults = q.length > 0;
+    $("homeDefault").style.display = showResults ? "none" : "block";
+    $("homeResults").style.display = showResults ? "block" : "none";
+    if(!showResults) return;
+    const matches = people.filter(p=> matchesQuery(p, q));
+    $("homeResults").innerHTML = matches.length
+      ? matches.map(p=>{
+          const g = groupOf(p.group);
+          return `<div class="result-row">
+            <div>
+              <div class="result-name">${escapeHtml(p.name)}</div>
+              <div class="result-fam">${g.name} · ${escapeHtml(p.location||'—')}</div>
+            </div>
+            <button class="result-go" data-go="${p.group}">عرض الأسرة</button>
+          </div>`;
+        }).join("")
+      : `<div class="empty">لا توجد نتائج مطابقة</div>`;
+    $("homeResults").querySelectorAll("[data-go]").forEach(btn=>{
+      btn.addEventListener("click", ()=>goTo(btn.dataset.go));
+    });
+  }
+
+  $("homeSearch").addEventListener("input", (e)=>{
+    homeQuery = e.target.value;
+    renderHomeSearch();
+  });
+
+  // ---------------- Family view ----------------
+  function famMatches(p){
+    return matchesQuery(p, famQuery);
+  }
+
+  function cardHtml(p, g){
+    return `<div class="card" data-id="${p.id}">
+      <div class="avatar" style="--fvc:${g.color}; --fvc-soft:${g.soft};">${initials(p.name)}</div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <p class="card-name">${escapeHtml(p.name)}</p>
+            <div class="card-loc">${iconPin()}<span>${escapeHtml(p.location||'—')}</span></div>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="icon-link call" style="--fvc:${g.color}; --fvc-soft:${g.soft};" href="tel:${digits(p.phone)}">${iconPhone()} ${escapeHtml(p.phone||'—')}</a>
+          ${p.phone ? `<a class="icon-link wa" target="_blank" rel="noopener" href="${waLink(p.phone)}">${iconWA()} واتساب</a>` : ""}
+        </div>
+        ${p.note ? `<div class="card-note">${escapeHtml(p.note)}</div>` : ""}
+      </div>
+    </div>`;
+  }
+
+  function renderFamilyView(){
+    const g = groupOf(currentGroup);
+    if(!g) return;
+    $("famHeroBand").style.setProperty("--fvc", g.color);
+    // لون زر الإضافة لازم يتحدد على نفس العنصر لأن fam-shell خارج famHeroBand
+    $("addPersonBtn").style.setProperty("--fvc", g.color);
+    $("famHeroIcon").innerHTML = g.icon;
+    $("famHeroTitle").textContent = g.name;
+    const items = people.filter(p=>p.group===g.id);
+    $("famHeroSub").textContent = items.length + (items.length===1 ? " شخص مسجل" : " أشخاص مسجلين");
+
+    const filtered = items.filter(famMatches);
+    $("famCards").innerHTML = filtered.length
+      ? filtered.map(p=>cardHtml(p, g)).join("")
+      : `<div class="empty">${famQuery ? "لا توجد نتائج مطابقة" : "لا يوجد أشخاص مضافين بعد"}</div>`;
+  }
+
+  $("famSearch").addEventListener("input", (e)=>{
+    famQuery = e.target.value;
+    $("famClear").style.display = famQuery ? "flex" : "none";
+    renderFamilyView();
+  });
+  $("famClear").addEventListener("click", ()=>{
+    famQuery = ""; $("famSearch").value = ""; $("famClear").style.display = "none"; renderFamilyView();
+  });
+
+  // ---------------- Add person ----------------
+  const addOverlay = $("addOverlay");
+  const addGroup = $("addGroup");
+
+  function openAddModal(){
+    addGroup.value = currentGroup || "mary";
+    $("addName").value = "";
+    $("addLocation").value = "";
+    $("addPhone").value = "";
+    $("addNote").value = "";
+    $("addPin").value = "";
+    addOverlay.dataset.open = "true";
+    setTimeout(()=>$("addName").focus(), 50);
+  }
+
+  function closeAddModal(){
+    addOverlay.dataset.open = "false";
+  }
+
+  $("addPersonBtn").addEventListener("click", openAddModal);
+  $("addCancel").addEventListener("click", closeAddModal);
+
+  addOverlay.addEventListener("click", (e)=>{
+    if(e.target === addOverlay) closeAddModal();
+  });
+
+  $("addSave").addEventListener("click", async ()=>{
+    const name = $("addName").value.trim();
+    const group = addGroup.value;
+    const location = $("addLocation").value.trim();
+    const phone = $("addPhone").value.trim();
+    const note = $("addNote").value.trim();
+    const pin = $("addPin").value;
+
+    if(!name){
+      showToast("اكتب الاسم أولاً");
+      $("addName").focus();
+      return;
+    }
+
+    if(pin !== ADMIN_PIN){
+      showToast("الرقم السري غير صحيح");
+      $("addPin").focus();
+      return;
+    }
+
+    const saveBtn = $("addSave");
+    saveBtn.disabled = true;
+    saveBtn.textContent = "جاري الحفظ...";
+
+    try{
+      const res = await fetch(API_URL, {
+        method:"POST",
+        headers:{"Content-Type":"text/plain;charset=utf-8"},
+        body:JSON.stringify({pin,name,group,location,phone,note})
+      });
+
+      const result = await res.json();
+      if(!result.ok) throw new Error(result.error || "save_failed");
+
+      closeAddModal();
+      showToast("تمت إضافة الاسم بنجاح");
+      await loadPeople();
+    }catch(err){
+      console.error(err);
+      showToast("حدث خطأ أثناء الحفظ");
+    }finally{
+      saveBtn.disabled = false;
+      saveBtn.textContent = "حفظ";
+    }
+  });
+
+  // ---------------- Master render ----------------
+  function render(){
+    const inFamily = !!currentGroup;
+    $("view-home").dataset.show = (!inFamily).toString();
+    $("view-family").dataset.show = inFamily.toString();
+    $("backBtn").style.display = inFamily ? "flex" : "none";
+
+    if(inFamily){
+      renderFamilyView();
+    } else {
+      renderFamGrid();
+      renderHomeSearch();
+    }
+  }
+
+  currentGroup = routeFromHash();
+  render();
+  loadPeople();
+})();
+</script>
+</body>
+</html>
